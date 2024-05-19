@@ -4,9 +4,23 @@ import edu.javeriana.ingenieria.estudiantes.dominio.Estudiante;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface RepositorioEstudiante extends JpaRepository<Estudiante, Integer> {
-    Estudiante findOneById(Integer id);
-
     Estudiante findOneByCedula(Integer cedula);
+
+    boolean existsByCedula(Integer cedula);
+
+    List<Estudiante> findAllByArl(boolean arl);
+
+    List<Estudiante> findAllBySentidoMiPractica(boolean sentidoMiPractica);
+
+    Estudiante findOneByIdInstitucional(Integer idInstitucional);
+
+    boolean existsByIdInstitucional(Integer idInstitucional);
+
+    boolean existsByCorreoInstitucional(String correoInstitucional);
+
+    Estudiante findOneByCorreoInstitucional(String correoInstitucional);
 }
