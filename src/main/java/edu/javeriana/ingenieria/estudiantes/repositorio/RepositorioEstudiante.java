@@ -8,17 +8,17 @@ import java.util.List;
 
 @Repository
 public interface RepositorioEstudiante extends JpaRepository<Estudiante, Integer> {
-    Estudiante findOneByCedula(Integer cedula);
+    Estudiante findOneByCedula(Long cedula);
 
-    boolean existsByCedula(Integer cedula);
+    boolean existsByCedula(Long cedula);
 
     List<Estudiante> findAllByArl(boolean arl);
 
     List<Estudiante> findAllBySentidoMiPractica(boolean sentidoMiPractica);
 
-    Estudiante findOneByIdInstitucional(Integer idInstitucional);
+    Estudiante findOneByIdInstitucional(Long idInstitucional);
 
-    boolean existsByIdInstitucional(Integer idInstitucional);
+    boolean existsByIdInstitucional(Long idInstitucional);
 
     boolean existsByCorreoInstitucional(String correoInstitucional);
 

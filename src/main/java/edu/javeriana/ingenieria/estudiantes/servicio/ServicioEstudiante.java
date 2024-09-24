@@ -33,11 +33,11 @@ public class ServicioEstudiante {
     }
 
 
-    public Estudiante obtenerEstudiantePorCedula(Integer cedula) {
+    public Estudiante obtenerEstudiantePorCedula(Long cedula) {
         return repositorio.findOneByCedula(cedula);
     }
 
-    public Estudiante obtenerEstudiantePorIdInstitucional(Integer idInstitucional) {
+    public Estudiante obtenerEstudiantePorIdInstitucional(Long idInstitucional) {
         return repositorio.findOneByIdInstitucional(idInstitucional);
     }
 
@@ -57,11 +57,11 @@ public class ServicioEstudiante {
         return repositorio.existsByCorreoInstitucional(correoInstitucional);
     }
 
-    public boolean estudianteExistePorCedula(Integer cedula){
+    public boolean estudianteExistePorCedula(Long cedula){
         return repositorio.existsByCedula(cedula);
     }
 
-    public boolean estudianteExistePorIdInstitucional(Integer idInstitucional) {
+    public boolean estudianteExistePorIdInstitucional(Long idInstitucional) {
         return repositorio.existsByIdInstitucional(idInstitucional);
     }
 }

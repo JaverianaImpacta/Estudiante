@@ -2,7 +2,6 @@ package edu.javeriana.ingenieria.estudiantes.controlador;
 
 import edu.javeriana.ingenieria.estudiantes.dominio.Estudiante;
 import edu.javeriana.ingenieria.estudiantes.servicio.ServicioEstudiante;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,11 +9,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/estudiantes")
-@CrossOrigin(origins="http://localhost:4200")
+@RequestMapping("${request-mapping.controller.app}")
+@CrossOrigin(origins="${request-mapping.controller.client}")
 public class ControladorEstudiante {
-    @Autowired
-    private ServicioEstudiante servicio;
+
+    private final ServicioEstudiante servicio;
+
+    public ControladorEstudiante(ServicioEstudiante servicio) {
+        this.servicio = servicio;
+    }
 
     @GetMapping("listar")
     public List<Estudiante> obtenerEstudiantes(){
@@ -60,7 +63,7 @@ public class ControladorEstudiante {
     }
 
     @GetMapping("obtenerCedula")
-    public ResponseEntity<Estudiante> obtenerEstudiantePorCedula(@RequestParam Integer cedula){
+    public ResponseEntity<Estudiante> obtenerEstudiantePorCedula(@RequestParam Long cedula){
         if(cedula == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -71,7 +74,7 @@ public class ControladorEstudiante {
     }
 
     @GetMapping("obtenerIdInstitucional")
-    public ResponseEntity<Estudiante> obtenerEstudiantePorIdInstitucional(@RequestParam Integer idInstitucional){
+    public ResponseEntity<Estudiante> obtenerEstudiantePorIdInstitucional(@RequestParam Long idInstitucional){
         if(idInstitucional == null){
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

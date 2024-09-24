@@ -13,12 +13,14 @@ public class Estudiante {
     private Integer id;
 
     @Column(name="id_institucional")
-    private Integer idInstitucional;
+    private Long idInstitucional;
 
     @Column(name="correo_institucional")
     private String correoInstitucional;
 
-    private Integer cedula, semestre;
+    private Long cedula;
+
+    private Integer semestre;
 
     private boolean arl;
 
